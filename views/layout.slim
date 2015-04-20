@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+
+    title eHGP Szene
+
+    link rel="stylesheet" href="#{url('/vendor/css/bootstrap.min.css')}"
+    /[if lt IE 9]
+      script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"
+      script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"
+    link rel="stylesheet" href="#{url('/css/style.css')}"
+
+  body
+
+    nav.navbar.navbar-default.navbar-static-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href="#{url('/')}" eHGP-Szene
+
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            == menu_link '/faktura', 'eFaktura'
+        
+        
+    .container
+      == yield
+
+
+    footer.page-footer
+      .container
+        p
+          | Ein Service von
+          em<> Enterprise Applications
+          | &middot;
+          a< href="mailto:applications@abraxas.ch?subject=eHGP-Szene" Support
+        p
+          | Powered by Open Source Software.
+          ul.list-inline
+            li <a href="http://www.sinatrarb.com/">Sinatra</a>
+            li <a href="http://getbootstrap.com/">Twitter Bootstrap</a>
+            li and many more...

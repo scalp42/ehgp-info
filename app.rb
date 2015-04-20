@@ -1,6 +1,7 @@
 require 'bundler'
 Bundler.require
 
+Dir.glob('./helpers/*.rb').each { |file| require file }
 require './controllers/application_controller.rb'
 Dir.glob('./controllers/*.rb').each { |file| require file }
 

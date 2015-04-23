@@ -3,8 +3,10 @@ Bundler.require
 require 'logger'
 
 APP_ROOT = File.expand_path('..', __FILE__)
-$LOAD_PATH.unshift APP_ROOT
+$LOAD_PATH.unshift File.join(APP_ROOT, 'lib')
+require 'core_ext/string'
 
+$LOAD_PATH.unshift APP_ROOT
 Dir.glob("#{APP_ROOT}/{helpers,models,controllers}/*.rb").each { |file| require file }
 
 ApplicationController.configure do

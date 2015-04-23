@@ -24,6 +24,25 @@ class FakturaController < ApplicationController
     slim :faktura_index
   end
 
+  get '/faktura/kanton/:id' do |kanton|
+    @kanton = select_first '"md_ID" as id',
+      ', "md_Kanton" as kanton',
+      ', "md_Beschreibung" as name',
+      'from "Mandant"',
+      'where "md_Kanton" = ', kanton.surround("'")
+
+    @vertraege = select '"sp_ID" as id',
+      ', "sp_Kanton" as kanton',
+      ', "sp_Name" as name',
+      ', "vt_cd_LeMdSystemkogu" as systemkogu',
+      'from "StammSpital"',
+      'inner join "VertragMandantMitSpital" on "vt_sp_ID" = "sp_ID"',
+      'where "vt_md_ID" = ', @kanton[:id],
+      'and "sp_cd_LeXmlZertifiziert" = 1'
+
+    slim :faktura_kanton
+  end
+
   get '/faktura/test' do
     binding.pry
   end

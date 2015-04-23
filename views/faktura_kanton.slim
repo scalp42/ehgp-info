@@ -1,0 +1,18 @@
+h1= @kanton[:name]
+
+table.table.table-striped
+  thead
+    tr
+      th Kanton
+      th Spital
+      th Systemkogu
+  tbody
+    - @vertraege.each do |v|
+      tr
+        td= v[:kanton]
+        td= v[:name]
+        td
+          - if v[:systemkogu].to_i == 0
+            span.label.label-success Kanton muss KoGu einreichen
+          - else
+            span.label.label-danger Es werden automatisch Systemkogus erstellt

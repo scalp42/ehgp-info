@@ -1,9 +1,20 @@
-h1 eFaktura Konfiguration
+h1
+  | eFaktura Konfiguration
+  small< Produktion
 
-p.lead Die folgenden Kantone haben LE f&uuml;r den Rechnungsempfang freigegeben:
+.row
+  .col-md-6
+    p.lead Die folgenden #{@mandanten.count} Kantone haben Spit&auml;ler f&uuml;r den Rechnungsempfang freigegeben:
+    .list-group
+      - @mandanten.each do |m|
+        a.list-group-item href="#{url("/faktura/kanton/#{m[:id]}")}"
+          = m[:name]
+          span.badge== pluralize m[:vertraege], 'Vertrag', 'Vertr&auml;ge'
 
-.list-group.pull-left
-  - @mandanten.each do |m|
-    a.list-group-item href="#{url("/#{m[:kanton]}")}"
-      = m[:beschreibung]
-      span.badge #{m[:vertraege].to_i} Vertr&auml;ge
+  .col-md-6
+    p.lead Die folgenden #{@spitaeler.count} Spit&auml;ler d&uuml;rfen elektronische Rechnungen einreichen:
+    .list-group
+      - @spitaeler.each do |s|
+        a.list-group-item href="#{url("/faktura/spital/#{s[:id]}")}"
+          = s[:name]
+          span.badge== pluralize s[:vertraege], 'Vertrag', 'Vertr&auml;ge'

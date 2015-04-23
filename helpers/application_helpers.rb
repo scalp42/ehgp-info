@@ -18,4 +18,15 @@ module ApplicationHelpers
     active = ' class="active"' if current_path?(link)
     %Q{<li#{active}><a href="#{url(link)}">#{text}</a></li>}
   end
+
+  # Bringt eine Person in die Mehrzahl, ausser +count+ ist 1.
+  #
+  # @param count [#to_i]
+  # @param singular [String] Einzahl
+  # @param plural [String] Mehrzahl
+  def pluralize(count, singular, plural)
+    count = count.to_i
+    word = count == 1 ? singular : plural
+    "#{count} #{word}"
+  end
 end

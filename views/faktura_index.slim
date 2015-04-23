@@ -1,0 +1,9 @@
+h1 eFaktura Konfiguration
+
+p.lead Die folgenden Kantone haben LE f&uuml;r den Rechnungsempfang freigegeben:
+
+.list-group.pull-left
+  - @mandanten.each do |m|
+    a.list-group-item href="#{url("/#{m[:kanton]}")}"
+      = m[:beschreibung]
+      span.badge #{m[:vertraege].to_i} Vertr&auml;ge

@@ -1,0 +1,13 @@
+default: &default
+  adapter: oracle
+  user:
+  password:
+  host:
+  port:
+  database:
+
+development:
+  <<: *default
+
+production:
+  <<: *default

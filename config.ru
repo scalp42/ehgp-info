@@ -1,8 +1,7 @@
 require './app.rb'
 
 map(ENV['MOUNT_PATH'] || '/') do
-  map('/') { run WebsiteController }
-  map('/faktura') { run FakturaController }
+  run EhgpSzene
 end
 
 # vi: syntax=ruby

@@ -5,7 +5,7 @@ module ApplicationHelpers
   # @return [Boolean] whether or not we are on +path+
   def current_path?(path)
     path = '/' + path.gsub(/^\/+/, '')
-    request.path.start_with?(path)
+    request.path_info.start_with?(path)
   end
 
   # Generates a Menu link that is displayed as "active" if the link matches our
@@ -15,8 +15,7 @@ module ApplicationHelpers
   # @param text [String] link text
   # @return [String]
   def menu_link(link, text)
-    link = url(link)
     active = ' class="active"' if current_path?(link)
-    %Q{<li#{active}><a href="#{link}">#{text}</a></li>}
+    %Q{<li#{active}><a href="#{url(link)}">#{text}</a></li>}
   end
 end

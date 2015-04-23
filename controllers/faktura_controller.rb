@@ -1,7 +1,7 @@
 require 'controllers/application_controller'
 
 class FakturaController < ApplicationController
-  get ('/') do
+  get ('/faktura') do
     @mandanten = query 'select',
       '  "md_Kanton" as kanton',
       ', "md_Beschreibung" as beschreibung',
@@ -13,5 +13,9 @@ class FakturaController < ApplicationController
       'order by "md_Beschreibung" asc'
 
     slim :faktura_index
+  end
+
+  get '/faktura/test' do
+    binding.pry
   end
 end

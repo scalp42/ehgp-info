@@ -18,6 +18,7 @@ class FakturaController < ApplicationController
       'from "StammSpital"',
       'left outer join "VertragMandantMitSpital" on "vt_sp_ID" = "sp_ID"',
       'where "sp_cd_LeXmlZertifiziert" = 1',
+      'and "vt_cd_LeMdFaktura" = 1',
       'group by "sp_ID","sp_Kanton","sp_Name"',
       'order by name'
 
@@ -38,9 +39,30 @@ class FakturaController < ApplicationController
       'from "StammSpital"',
       'inner join "VertragMandantMitSpital" on "vt_sp_ID" = "sp_ID"',
       'where "vt_md_ID" = ', @kanton[:id],
+      'and "vt_cd_LeMdFaktura" = 1',
       'and "sp_cd_LeXmlZertifiziert" = 1'
 
     slim :faktura_kanton
+  end
+
+  get '/faktura/spital/:id' do |id|
+    id = id.to_i
+
+    @spital = select_first '"sp_ID" as id',
+      ', "sp_Kanton" as kanton',
+      ', "sp_Name" as name',
+      ', "sp_cd_LeXmlZertifiziert" as zertifiziert',
+      'from "StammSpital"',
+      'where "sp_ID" =', id
+
+    @vertraege = select '"md_Beschreibung" as kanton',
+      ', "vt_cd_LeMdSystemkogu" as systemkogu',
+      'from "Mandant"',
+      'inner join "VertragMandantMitSpital" on "vt_md_ID" = "md_ID"',
+      'where "vt_sp_ID" = ', id,
+      'and "vt_cd_LeMdFaktura" = 1'
+
+    slim :faktura_spital
   end
 
   get '/faktura/test' do

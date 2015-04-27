@@ -12,8 +12,11 @@ Dir.glob("#{APP_ROOT}/{helpers,models,controllers}/*.rb").each { |file| require 
 ApplicationController.configure do
   dbc = open("#{APP_ROOT}/config/database.yml").read
   DB = Sequel.connect(YAML.load(dbc)[settings.environment.to_s])
-  DB.logger = Logger.new($stdout)
   DB.run('ALTER SESSION SET CURRENT_SCHEMA = KOGU')
+end
+
+ApplicationController.configure :development do
+  DB.logger = Logger.new($stdout)
 end
 
 class EhgpSzene < Sinatra::Base

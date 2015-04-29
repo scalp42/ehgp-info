@@ -42,4 +42,9 @@ module ApplicationHelpers
       slim 'span.label.label-danger Es werden automatisch Systemkogus erstellt'
     end
   end
+
+  # Erzeugt einen Link mit dem angegebenen +text+ zu der angegebenen +url+.
+  def link_to(text, url)
+    '<a href="%s">%s</a>' % [url(url), text]
+  end
 end

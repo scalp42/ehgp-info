@@ -1,23 +1,29 @@
-.row
-  h1.col-md-6 eFaktura <small>Produktion</small>
-  .col-md-6
-    .alert.alert-info
-      p Klicke auf einen Kanton oder Spital um weitere Infos zu erhalten.
-      p Mit <kbd><kbd>Ctrl</kbd> + <kbd>F</kbd></kbd> kann schnell nach Kantonen oder Spit&uaml;lern gesucht werden.
+.page-header
+  h1 eFaktura <small>Produktion</small>
+
+p <em>Klicke auf einen Kanton oder Spital um weitere Infos zu erhalten. Mit <kbd><kbd>Ctrl</kbd> + <kbd>F</kbd></kbd> kann schnell nach Kantonen oder Spit&auml;lern gesucht werden.</em>
 
 .row
   .col-md-6
-    p.lead Die folgenden #{@mandanten.count} Kantone haben Spit&auml;ler f&uuml;r den Rechnungsempfang freigegeben:
-    .list-group
-      - @mandanten.each do |m|
-        a.list-group-item href="#{url("/faktura/kanton/#{m[:id]}")}"
-          = m[:name]
-          span.badge== pluralize m[:vertraege], 'Vertrag', 'Vertr&auml;ge'
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Kantone
+      .panel-body
+        p.lead Die folgenden #{@mandanten.count} Kantone haben Spit&auml;ler f&uuml;r den Rechnungsempfang freigegeben:
+      .list-group
+        - @mandanten.each do |m|
+          a.list-group-item href="#{url("/faktura/kanton/#{m[:id]}")}"
+            = m[:name]
+            span.badge== pluralize m[:vertraege], 'Vertrag', 'Vertr&auml;ge'
 
   .col-md-6
-    p.lead Die folgenden #{@spitaeler.count} Spit&auml;ler d&uuml;rfen elektronische Rechnungen einreichen:
-    .list-group
-      - @spitaeler.each do |s|
-        a.list-group-item href="#{url("/faktura/spital/#{s[:id]}")}"
-          = s[:name]
-          span.badge== pluralize s[:vertraege], 'Vertrag', 'Vertr&auml;ge'
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Leistungserbringer
+      .panel-body
+        p.lead Die folgenden #{@spitaeler.count} Spit&auml;ler d&uuml;rfen elektronische Rechnungen einreichen:
+      .list-group
+        - @spitaeler.each do |s|
+          a.list-group-item href="#{url("/faktura/spital/#{s[:id]}")}"
+            = s[:name]
+            span.badge== pluralize s[:vertraege], 'Vertrag', 'Vertr&auml;ge'

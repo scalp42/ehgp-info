@@ -56,7 +56,8 @@ class FakturaController < ApplicationController
       'from "StammSpital"',
       'where "sp_ID" =', id
 
-    @vertraege = select '"md_Beschreibung" as kanton',
+    @vertraege = select '"md_Kanton" as kanton',
+      ', "md_Beschreibung" as beschreibung',
       ', "vt_cd_LeMdSystemkogu" as systemkogu',
       'from "Mandant"',
       'inner join "VertragMandantMitSpital" on "vt_md_ID" = "md_ID"',

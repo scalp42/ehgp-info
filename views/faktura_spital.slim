@@ -1,10 +1,11 @@
-h1
-  = @spital[:name]
-  small<= @spital[:kanton]
+.page-header
+  h1
+    = @spital[:name]
+    small<= @spital[:kanton]
 
-p.lead Die Klinik "#{@spital[:name]}" darf an folgende Kantone XML-Rechnungen senden:
+p.lead Der Leistungserbringer <strong>#{@spital[:name]}</strong> darf an folgende Kantone XML-Rechnungen senden:
 
-table.table.table-striped
+table.table.table-striped.table-hover
   thead
     tr
       th Kanton
@@ -12,5 +13,5 @@ table.table.table-striped
   tbody
     - @vertraege.each do |v|
       tr
-        td= v[:kanton]
+        td== link_to v[:beschreibung], '/faktura/kanton/'+v[:kanton]
         td== systemkogu_label(v[:systemkogu])

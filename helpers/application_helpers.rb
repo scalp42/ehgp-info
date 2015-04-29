@@ -29,4 +29,17 @@ module ApplicationHelpers
     word = count == 1 ? singular : plural
     "#{count} #{word}"
   end
+
+  # Zeigt ein Label an, dass anzeigt ob ein Spital KoGus
+  # einreichen muss, oder ob automatisch Systemkogus
+  # angelegt werden.
+  #
+  # @param [#to_i] systemkogu Ob automatisch Systemkogus erstellt werden oder nicht
+  def systemkogu_label(systemkogu)
+    if systemkogu.to_i == 0
+      slim 'span.label.label-success Spital muss KoGu einreichen'
+    else
+      slim 'span.label.label-danger Es werden automatisch Systemkogus erstellt'
+    end
+  end
 end

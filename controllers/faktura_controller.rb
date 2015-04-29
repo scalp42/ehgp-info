@@ -40,7 +40,8 @@ class FakturaController < ApplicationController
       'inner join "VertragMandantMitSpital" on "vt_sp_ID" = "sp_ID"',
       'where "vt_md_ID" = ', @kanton[:id],
       'and "vt_cd_LeMdFaktura" = 1',
-      'and "sp_cd_LeXmlZertifiziert" = 1'
+      'and "sp_cd_LeXmlZertifiziert" = 1',
+      'order by "sp_Kanton" asc, "sp_Name" asc'
 
     slim :faktura_kanton
   end
@@ -60,7 +61,8 @@ class FakturaController < ApplicationController
       'from "Mandant"',
       'inner join "VertragMandantMitSpital" on "vt_md_ID" = "md_ID"',
       'where "vt_sp_ID" = ', id,
-      'and "vt_cd_LeMdFaktura" = 1'
+      'and "vt_cd_LeMdFaktura" = 1',
+      'order by "md_Beschreibung" asc'
 
     slim :faktura_spital
   end

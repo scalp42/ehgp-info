@@ -1,0 +1,14 @@
+.col-sm-6.col-lg-4
+  .panel.panel-default
+    .panel-heading
+      h3.panel-title= title
+    table.table
+      thead
+        tr
+          th Code
+          th Text
+      tbody
+        - codes.each do |code|
+          tr
+            td= code[:id]
+            td= code[:text]

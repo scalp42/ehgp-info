@@ -19,6 +19,7 @@ ApplicationController.configure :development do
   DB.logger = Logger.new($stdout)
 end
 
+
 class EhgpSzene < Sinatra::Base
 
   use WebsiteController

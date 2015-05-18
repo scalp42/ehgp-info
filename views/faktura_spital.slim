@@ -5,7 +5,14 @@
       = @spital[:kanton]
       span.label.label-primary<= @spital[:intermediaer]
 
-p.lead Der Leistungserbringer <strong>#{@spital[:name]}</strong> darf an folgende Kantone XML-Rechnungen senden:
+p
+  dl.dl-horizontal
+    dt EAN
+    dd= @spital[:ean]
+    dt zertifiziert?
+    dd== zertifiziert_label(@spital[:zertifiziert])
+
+p Dieser Leistungserbringer darf an folgende Kantone XML-Rechnungen senden:
 
 table.table.table-striped.table-hover
   thead

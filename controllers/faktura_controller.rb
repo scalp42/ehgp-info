@@ -52,6 +52,7 @@ class FakturaController < ApplicationController
     @spital = select_first '"sp_ID" as id',
       ', "sp_Kanton" as kanton',
       ', "sp_Name" as name',
+      ', "sp_EAN" as ean',
       ', "sp_cd_LeXmlZertifiziert" as zertifiziert',
       ', "im_Name" as intermediaer',
       'from "StammSpital"',

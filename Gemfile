@@ -4,7 +4,7 @@ gem 'sinatra'
 gem 'ruby-oci8', require: 'oci8'
 gem 'sequel'
 gem 'slim'
-gem 'puma'
+gem 'thin'
 
 group :development do
   gem 'foreman'

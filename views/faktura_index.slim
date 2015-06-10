@@ -12,9 +12,9 @@ p <em>Klicke auf einen Kanton oder Spital um weitere Infos zu erhalten. Mit <kbd
         p.lead Die folgenden #{@mandanten.count} Kantone haben Spit&auml;ler f&uuml;r den Rechnungsempfang freigegeben:
       .list-group
         - @mandanten.each do |m|
-          a.list-group-item href="#{url("/faktura/kanton/#{m[:id]}")}"
-            = m[:name]
-            span.badge== pluralize m[:vertraege], 'Vertrag', 'Vertr&auml;ge'
+          a.list-group-item href="#{url("/faktura/kanton/#{m.kanton}")}"
+            = m.name
+            span.badge== pluralize m.vertraege, 'Vertrag', 'Vertr&auml;ge'
 
   .col-md-6
     .panel.panel-default

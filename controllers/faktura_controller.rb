@@ -2,16 +2,7 @@ require 'controllers/application_controller'
 
 class FakturaController < ApplicationController
   get ('/faktura') do
-    @mandanten = query 'select',
-      '  "md_Kanton" as id',
-      ', "md_Beschreibung" as name',
-      ', count(*) as vertraege',
-      'FROM "Mandant"',
-      'left inner join "VertragMandantMitSpital" on "vt_md_ID" = "md_ID"',
-      'where "vt_cd_LeMdFaktura" = 1',
-      'group by "md_Kanton", "md_Beschreibung"',
-      'order by "md_Beschreibung" asc'
-
+    @mandanten = Mandant.with_faktura_contracts
     @spitaeler = query 'select "sp_ID" as id',
       ', "sp_Kanton"||\' \'||"sp_Name" as name',
       ', count ("vt_sp_ID") as vertraege',

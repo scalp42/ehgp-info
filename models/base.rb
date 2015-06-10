@@ -7,4 +7,8 @@ class Base
     return @data[m] if @data.keys.include?(m)
     super
   end
+
+  def to_s
+    [self.class.name, @data].join
+  end
 end

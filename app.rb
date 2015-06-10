@@ -25,6 +25,7 @@ class EhgpSzene < Sinatra::Base
   use WebsiteController
   use FakturaController
   use CodesController
+  use ReferenztarifeController
 
   configure :development do
     Bundler.require(:development)

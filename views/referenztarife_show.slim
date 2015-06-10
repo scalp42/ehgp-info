@@ -1,0 +1,24 @@
+.page-header
+  h1
+    = @mandant.name
+    small< Referenztarife
+
+p F&uuml;r diesen Kanton sind folgende Referenztarife hinterlegt:
+
+table.table.table-striped.table-hover
+  thead
+    tr
+      th Text
+      th Betrag
+      th Typ
+      th gültig ab
+      th gültig bis
+
+  tbody
+    - @tarife.each do |t|
+      tr class="#{t.aktiv ? 'success' : 'danger'}"
+        td= t.text
+        td= format 'SFr. %.2f', t.betrag
+        td= t.typ
+        td= t.gueltig_ab.strftime('%d.%m.%Y')
+        td= t.gueltig_bis.strftime('%d.%m.%Y') rescue '-'

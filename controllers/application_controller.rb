@@ -14,4 +14,9 @@ class ApplicationController < Sinatra::Base
 #    log.sync = true
 #    use Rack::CommonLogger, log
   end
+
+  # `pass`, falls der gesuchte Kanton nicht existiert
+  def check_kanton
+    pass unless Mandant.kantone.include?(params['kanton'])
+  end
 end

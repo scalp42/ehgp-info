@@ -1,0 +1,12 @@
+.page-header
+  h1 Referenztarife <small>Referenztarif</small>
+
+table.table.table-striped.table-hover
+  tr
+    th Kanton
+    th Anz. Referenztarife
+  - @kantone.each do |k|
+    tr
+      td
+        a href="#{url('/referenztarife/'+k[:id])}"= k[:name]
+      td= k[:tarife].to_i

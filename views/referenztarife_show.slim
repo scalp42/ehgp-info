@@ -3,7 +3,11 @@
     = @mandant.name
     small< Referenztarife
 
-p F&uuml;r diesen Kanton sind folgende Referenztarife hinterlegt:
+p
+  em> Die Sortierung hier entspricht ev. NICHT der in eHGP!
+  span.text-success.bg-success= 'Grün = aktiv'
+  = ', '
+  span.text-danger.bg-danger= 'Rot = inaktiv'
 
 table.table.table-striped.table-hover
   thead
@@ -18,7 +22,7 @@ table.table.table-striped.table-hover
     - @tarife.each do |t|
       tr class="#{t.aktiv ? 'success' : 'danger'}"
         td= t.text
-        td= format 'SFr. %.2f', t.betrag
+        td.text-right= format 'SFr. %.2f', t.betrag
         td= t.typ
         td= t.gueltig_ab.strftime('%d.%m.%Y')
         td= t.gueltig_bis.strftime('%d.%m.%Y') rescue '-'

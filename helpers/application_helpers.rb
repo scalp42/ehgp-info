@@ -55,6 +55,17 @@ module ApplicationHelpers
     end
   end
 
+  # Zeigt ein Label an, das anzeigt ob ein LE aktiv ist oder nicht.
+  #
+  # @param [Boolean] aktiv
+  def aktiv_label(aktiv)
+    if aktiv
+      slim 'span.label.label-success Spital ist aktiv!'
+    else
+      slim 'span.label.label-danger Spital ist NICHT aktiv!'
+    end
+  end
+
   # Erzeugt einen Link mit dem angegebenen +text+ zu der angegebenen +url+.
   def link_to(text, url)
     '<a href="%s">%s</a>' % [url(url), text]

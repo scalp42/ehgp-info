@@ -39,17 +39,7 @@ class FakturaController < ApplicationController
 
   get '/faktura/spital/:id' do |id|
     id = id.to_i
-
-    @spital = select_first '"sp_ID" as id',
-      ', "sp_Kanton" as kanton',
-      ', "sp_Name" as name',
-      ', "sp_EAN" as ean',
-      ', "sp_cd_LeXmlZertifiziert" as zertifiziert',
-      ', "im_Name" as intermediaer',
-      'from "StammSpital"',
-      'left join "Intermediaer" on "im_ID" = "sp_Intermediaer"',
-      'where "sp_ID" =', id
-
+    @spital = Spital.find(id)
     @vertraege = select '"md_Kanton" as kanton',
       ', "md_Beschreibung" as beschreibung',
       ', "vt_cd_LeMdSystemkogu" as systemkogu',

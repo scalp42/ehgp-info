@@ -1,16 +1,18 @@
 .page-header
   h1
-    = @spital[:name]
+    = @spital.name
     small<
-      = @spital[:kanton]
-      span.label.label-primary<= @spital[:intermediaer]
+      = @spital.kanton
+      span.label.label-primary<= @spital.intermediaer
 
 p
   dl.dl-horizontal
     dt EAN
-    dd= @spital[:ean]
+    dd= @spital.ean
     dt zertifiziert?
-    dd== zertifiziert_label(@spital[:zertifiziert])
+    dd== zertifiziert_label @spital.zertifiziert
+    dt aktiv?
+    dd== aktiv_label @spital.aktiv?
 
 p Dieser Leistungserbringer darf an folgende Kantone XML-Rechnungen senden:
 

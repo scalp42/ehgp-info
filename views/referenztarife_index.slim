@@ -1,12 +1,11 @@
 .page-header
-  h1 Referenztarife <small>Referenztarif</small>
+  h1 Referenztarife
 
-table.table.table-striped.table-hover
-  tr
-    th Kanton
-    th Anz. Referenztarife
-  - @kantone.each do |k|
-    tr
-      td
-        a href="#{url('/referenztarife/'+k[:id])}"= k[:name]
-      td= k[:tarife].to_i
+.panel.panel-default
+  .panel-heading Kantone
+  .list-group
+    - @kantone.each do |k|
+      a.list-group-item href="#{url('/referenztarife/'+k[:id])}"
+        = k[:name]
+        span.badge= pluralize(k[:tarife], 'Tarif', 'Tarife')
+

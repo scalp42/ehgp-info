@@ -1,5 +1,5 @@
 body {
-  padding-top: 20px;
+  padding-top: 70px;
   padding-bottom: 20px;
 }
 
@@ -17,4 +17,8 @@ body {
 
 .list-group-item .badge {
   margin-left: 10px;
+}
+
+.home .lead {
+  height: 87px;
 }

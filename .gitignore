@@ -1,5 +1,4 @@
 /config/database.yml
-/config/thin.yml
 /tmp/
 /TODO.md
 /logs/*.log

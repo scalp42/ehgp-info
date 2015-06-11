@@ -11,6 +11,7 @@ $LOAD_PATH.unshift APP_ROOT
 Dir.glob("#{APP_ROOT}/{helpers,models,controllers}/*.rb").each { |file| require file }
 
 ApplicationController.configure do
+  OCI8::BindType::Mapping[:number] = OCI8::BindType::Integer
   dbc = open("#{APP_ROOT}/config/database.yml").read
   DB = Sequel.connect(YAML.load(dbc)[settings.environment.to_s])
   DB.run('ALTER SESSION SET CURRENT_SCHEMA = KOGU')

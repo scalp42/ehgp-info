@@ -7,7 +7,6 @@ gem 'slim'
 gem 'thin'
 
 group :development do
-  gem 'foreman'
   gem 'pry'
   gem 'shotgun'
 end

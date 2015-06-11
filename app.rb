@@ -1,3 +1,4 @@
+require 'yaml'
 require 'bundler'
 Bundler.require
 require 'logger'

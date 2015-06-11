@@ -11,16 +11,21 @@ $LOAD_PATH.unshift APP_ROOT
 Dir.glob("#{APP_ROOT}/{helpers,models,controllers}/*.rb").each { |file| require file }
 
 ApplicationController.configure do
+  # Don't cast `number` types to BigDecimal
   OCI8::BindType::Mapping[:number] = OCI8::BindType::Integer
+
+  # Load DB configuration
   dbc = open("#{APP_ROOT}/config/database.yml").read
   DB = Sequel.connect(YAML.load(dbc)[settings.environment.to_s])
+
+  # set up DB logging
+  log = $stdout.dup # or do `File.new ...` here
+  log.sync = true
+  logger = Logger.new(log)
+  logger.sev_threshold = Logger::WARN if settings.production?
+  DB.logger = logger
   DB.run('ALTER SESSION SET CURRENT_SCHEMA = KOGU')
 end
-
-ApplicationController.configure :development do
-  DB.logger = Logger.new($stdout)
-end
-
 
 class EhgpSzene < Sinatra::Base
 

@@ -2,8 +2,10 @@
 
 ## Installation
 
-    bundle install --without development:test
-    MOUNT_PATH=/ehgp rackup -o 0.0.0.0 -p 13051 -E production
+    cp config/thin.example.yml config/thin.yml
+    # edit config/thin.yml
+    bundle install --deployment
+    bundle exec thin start -C config/thin.yml
 
 ## Development
 

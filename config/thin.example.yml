@@ -1,0 +1,10 @@
+---
+user: 
+group: 
+port: 
+rackup: config.ru
+environment: production
+prefix: /ehgp
+tag: ehgp-szene-production
+daemonize: true
+

@@ -24,6 +24,4 @@ p <em>Klicke auf einen Kanton oder Spital um weitere Infos zu erhalten. Mit <kbd
         p.lead Die folgenden #{@spitaeler.count} Spit&auml;ler d&uuml;rfen elektronische Rechnungen einreichen:
       .list-group
         - @spitaeler.each do |s|
-          a.list-group-item href="#{url("/faktura/spital/#{s[:id]}")}"
-            = s[:name]
-            span.badge== pluralize s[:vertraege], 'Vertrag', 'Vertr&auml;ge'
+          == list_group_item_spital(s)

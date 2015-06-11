@@ -3,15 +3,7 @@ require 'controllers/application_controller'
 class FakturaController < ApplicationController
   get ('/faktura') do
     @mandanten = Mandant.with_faktura_contracts
-    @spitaeler = query 'select "sp_ID" as id',
-      ', "sp_Kanton"||\' \'||"sp_Name" as name',
-      ', count ("vt_sp_ID") as vertraege',
-      'from "StammSpital"',
-      'left outer join "VertragMandantMitSpital" on "vt_sp_ID" = "sp_ID"',
-      'where "sp_cd_LeXmlZertifiziert" = 1',
-      'and "vt_cd_LeMdFaktura" = 1',
-      'group by "sp_ID","sp_Kanton","sp_Name"',
-      'order by name'
+    @spitaeler = Spital.having_faktura_contracts
 
     slim :faktura_index
   end

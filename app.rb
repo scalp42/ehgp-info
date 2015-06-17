@@ -8,7 +8,7 @@ $LOAD_PATH.unshift File.join(APP_ROOT, 'lib')
 require 'core_ext/string'
 
 $LOAD_PATH.unshift APP_ROOT
-Dir.glob("#{APP_ROOT}/{helpers,models,controllers}/*.rb").each { |file| require file }
+require 'controllers/application_controller.rb'
 
 ApplicationController.configure do
   # Don't cast `number` types to BigDecimal
@@ -26,6 +26,8 @@ ApplicationController.configure do
   DB.logger = logger
   DB.run('ALTER SESSION SET CURRENT_SCHEMA = KOGU')
 end
+
+Dir.glob("#{APP_ROOT}/{helpers,models,controllers}/*.rb").each { |file| require file }
 
 class EhgpSzene < Sinatra::Base
 

@@ -8,25 +8,6 @@ module ApplicationHelpers
     request.path_info.start_with?(path)
   end
 
-  # Generates a Menu link that is displayed as "active" if the link matches our
-  # current location.
-  #
-  # @param link [String] URL to use
-  # @param text [String] link text
-  # @return [String]
-  def menu_link(link, text, icon: nil)
-    active = ' class="active"' if current_path?(link)
-    icon = icon ? glyphicon(icon) : ''
-    %Q{<li#{active}><a href="#{url(link)}">#{icon}#{text}</a></li>}
-  end
-
-  # Generate a Glyphicon.
-  #
-  # @param glyph [#to_s] The Glyph to render
-  def glyphicon(glyph)
-    slim %Q{span.glyphicon.glyphicon-#{glyph.to_s}> aria-hidden="true"}
-  end
-
   # Bringt eine Person in die Mehrzahl, ausser +count+ ist 1.
   #
   # @param count [#to_i]
@@ -45,9 +26,9 @@ module ApplicationHelpers
   # @param [#to_i] systemkogu Ob automatisch Systemkogus erstellt werden oder nicht
   def systemkogu_label(systemkogu)
     if systemkogu.to_i == 0
-      slim 'span.label.label-success Spital muss KoGu einreichen'
+     label :success, 'Spital muss KoGu einreichen'
     else
-      slim 'span.label.label-danger Es werden automatisch Systemkogus erstellt'
+      label :danger, 'Es werden automatisch Systemkogus erstellt'
     end
   end
 
@@ -57,9 +38,9 @@ module ApplicationHelpers
   # @param [Boolean] zertifiziert
   def zertifiziert_label(zertifiziert)
     if zertifiziert
-      slim 'span.label.label-success Spital ist zertifiziert!'
+      label :success, 'Spital ist zertifiziert!'
     else
-      slim 'span.label.label-danger Spital ist NICHT zertifiziert!'
+      label :danger, 'Spital ist NICHT zertifiziert!'
     end
   end
 
@@ -68,9 +49,9 @@ module ApplicationHelpers
   # @param [Boolean] aktiv
   def aktiv_label(aktiv)
     if aktiv
-      slim 'span.label.label-success Spital ist aktiv!'
+      label :success, 'Spital ist aktiv!'
     else
-      slim 'span.label.label-danger Spital ist NICHT aktiv!'
+      label :danger, 'Spital ist NICHT aktiv!'
     end
   end
 

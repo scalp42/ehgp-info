@@ -1,3 +1,4 @@
+require 'helpers/bootstrap_helpers'
 require 'helpers/application_helpers'
 require 'helpers/database_helpers'
 
@@ -18,6 +19,7 @@ class ApplicationController < Sinatra::Base
   }
   enable :sessions
 
+  helpers BootstrapHelpers
   helpers ApplicationHelpers
   helpers DatabaseHelpers
 

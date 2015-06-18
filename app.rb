@@ -30,11 +30,16 @@ end
 Dir.glob("#{APP_ROOT}/{helpers,models,controllers}/*.rb").each { |file| require file }
 
 class EhgpSzene < Sinatra::Base
+  helpers ApplicationHelpers
 
   use WebsiteController
   use FakturaController
   use CodesController
   use ReferenztarifeController
+
+  not_found do
+    slim :'404'
+  end
 
   configure :development do
     Bundler.require(:development)

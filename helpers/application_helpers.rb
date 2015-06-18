@@ -19,6 +19,13 @@ module ApplicationHelpers
     %Q{<li#{active}><a href="#{url(link)}">#{text}</a></li>}
   end
 
+  # Generate a Glyphicon.
+  #
+  # @param glyph [#to_s] The Glyph to render
+  def glyphicon(glyph)
+    slim %Q{span.glyphicon.glyphicon-#{glyph.to_s}> aria-hidden="true"}
+  end
+
   # Bringt eine Person in die Mehrzahl, ausser +count+ ist 1.
   #
   # @param count [#to_i]

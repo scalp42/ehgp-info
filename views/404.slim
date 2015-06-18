@@ -1,0 +1,8 @@
+.panel.panel-danger
+  .panel-heading
+    h3.panel-title
+      == glyphicon :'exclamation-sign'
+      |404 Not found
+  .panel-body Die gewünschte Seite <code>#{request.path}</code> existiert nicht.
+  - if request.referrer
+    .panel-footer Referrer: <code>#{request.referrer}</code>

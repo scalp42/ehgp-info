@@ -14,9 +14,10 @@ module ApplicationHelpers
   # @param link [String] URL to use
   # @param text [String] link text
   # @return [String]
-  def menu_link(link, text)
+  def menu_link(link, text, icon: nil)
     active = ' class="active"' if current_path?(link)
-    %Q{<li#{active}><a href="#{url(link)}">#{text}</a></li>}
+    icon = icon ? glyphicon(icon) : ''
+    %Q{<li#{active}><a href="#{url(link)}">#{icon}#{text}</a></li>}
   end
 
   # Generate a Glyphicon.

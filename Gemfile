@@ -9,6 +9,7 @@ gem 'pry'
 
 group :development do
   gem 'shotgun'
+  gem 'net-ssh'
 end
 
 # vi: syntax=ruby

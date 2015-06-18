@@ -28,7 +28,8 @@ class Spital < Base
         'from "StammSpital"',
         'left join "Intermediaer" on "im_ID" = "sp_Intermediaer"',
         'where "sp_ID" =', id.to_i
-      self.new(data)
+
+      data.nil? ? nil : self.new(data)
     end
 
     # Alle spitaeler mit anz. vertraegen.

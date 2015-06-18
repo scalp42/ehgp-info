@@ -9,6 +9,8 @@ class FakturaController < ApplicationController
   end
 
   get '/faktura/kanton/:id' do |kanton|
+    check_kanton(kanton)
+
     @kanton = select_first '"md_ID" as id',
       ', "md_Kanton" as kanton',
       ', "md_Beschreibung" as name',
@@ -32,6 +34,7 @@ class FakturaController < ApplicationController
   get '/faktura/spital/:id' do |id|
     id = id.to_i
     @spital = Spital.find(id)
+    pass unless @spital # not found
     @vertraege = select '"md_Kanton" as kanton',
       ', "md_Beschreibung" as beschreibung',
       ', "vt_cd_LeMdSystemkogu" as systemkogu',
@@ -42,9 +45,5 @@ class FakturaController < ApplicationController
       'order by "md_Beschreibung" asc'
 
     slim :faktura_spital
-  end
-
-  get '/faktura/test' do
-    binding.pry
   end
 end

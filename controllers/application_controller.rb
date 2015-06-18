@@ -26,8 +26,10 @@ class ApplicationController < Sinatra::Base
     enable :logging
   end
 
+  protected
+
   # `pass`, falls der gesuchte Kanton nicht existiert
-  def check_kanton
-    pass unless Mandant.kantone.include?(params['kanton'])
+  def check_kanton(kanton)
+    pass unless Mandant.kantone.include?(kanton)
   end
 end

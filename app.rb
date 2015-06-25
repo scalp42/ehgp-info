@@ -42,7 +42,6 @@ class EhgpSzene < Sinatra::Base
   end
 
   configure :development do
-    Bundler.require(:development)
     Slim::Engine.set_options pretty: true, sort_attrs: false
   end
 end

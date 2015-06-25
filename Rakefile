@@ -26,7 +26,7 @@ task :deploy do
 
   tag = ENV['tag']
   if tag.nil?
-    latest_tag = `git tag | head -1`.strip
+    latest_tag = `git tag | tail -1`.strip
     print "Tag/Ref to deploy (#{latest_tag}): "
     input = $stdin.gets.strip
     tag = input.empty? ? latest_tag : input
@@ -44,8 +44,10 @@ task :deploy do
 
   require 'sshkit'
   require 'sshkit/dsl'
+
   on "#{deploy_as}@#{deploy_to}" do |host|
-    execute :mkdir, '-p', 'ehgp-info'
+    execute :mkdir, '-p', 'ehgp-info' unless test("[ -d #{deploy_into} ]")
+
     within deploy_into do
       # create base infrastructure
       execute :mkdir, '-p', '{releases,shared/{config,tmp,log,bundle}}'

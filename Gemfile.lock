@@ -2,9 +2,12 @@ GEM
   remote: https://rubygems.org/
   specs:
     coderay (1.1.0)
+    colorize (0.7.7)
     daemons (1.2.2)
     eventmachine (1.0.7)
     method_source (0.8.2)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -25,6 +28,10 @@ GEM
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
     slop (3.6.0)
+    sshkit (1.7.1)
+      colorize (>= 0.7.0)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     temple (0.7.6)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
@@ -36,13 +43,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  net-ssh
   pry
   ruby-oci8
   sequel
   shotgun
   sinatra
   slim
+  sshkit
   thin
 
 BUNDLED WITH

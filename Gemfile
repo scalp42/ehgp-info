@@ -9,7 +9,7 @@ gem 'pry'
 
 group :development do
   gem 'shotgun'
-  gem 'net-ssh'
+  gem 'sshkit'
 end
 
 # vi: syntax=ruby

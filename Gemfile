@@ -9,7 +9,10 @@ gem 'pry'
 
 group :development do
   gem 'shotgun'
-  gem 'sshkit'
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'capistrano-thin'
 end
 
 # vi: syntax=ruby

@@ -1,5 +1,6 @@
 /config/database.yml
-/tmp/
+/tmp/*
+!/tmp/.keep
 /TODO.md
 /logs/*.log
 /.bundle/

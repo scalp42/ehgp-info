@@ -45,4 +45,8 @@ class EhgpSzene < Sinatra::Base
   configure :development do
     Slim::Engine.set_options pretty: true, sort_attrs: false
   end
+
+  configure :production do
+    enable :logging
+  end
 end

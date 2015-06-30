@@ -28,6 +28,10 @@ class ApplicationController < Sinatra::Base
     enable :logging
   end
 
+  not_found do
+    slim :'404'
+  end
+
   protected
 
   # `pass`, falls der gesuchte Kanton nicht existiert

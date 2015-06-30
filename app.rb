@@ -31,6 +31,7 @@ Dir.glob("#{APP_ROOT}/{helpers,models,controllers}/*.rb").each { |file| require 
 
 class EhgpSzene < Sinatra::Base
   helpers ApplicationHelpers
+  helpers BootstrapHelpers
 
   use WebsiteController
   use FakturaController

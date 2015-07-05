@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# script/setup: Set up the application for the first time
+
+set -e
+
+cd "$(dirname "$0")/.."
+script/bootstrap
+
+echo "==> check DB config..."
+test -f config/database.yml || {
+  cp config/database.example.yml config/database.yml
+  $EDITOR config/database.yml
+}

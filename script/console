@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+cd "$(dirname "$0")/.."
+
+if [ -n "$1" ]; then
+  if [ "$1" ==  "production" ]; then
+    # TODO: connect to production and start a console
+    # IDEA: cap production console
+    echo -n ""
+  else
+    echo "Sorry, don't know how to connect to '$1' environment!"
+    exit 1
+  fi
+else
+  # no argument, run local dev console
+  script/update
+  bin/console
+fi

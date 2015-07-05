@@ -1,20 +1,22 @@
 # eHGP Szene
 
-## Installation
+## Setup
 
-```bash
-bundle install --deployment
-bundle exec thin start -C config/thin.yml -p 13051
-```
+After a first-time checkout, run `script/setup` to install all dependencies and set up the entire application.
+
+After a fresh pull, run `script/update` to make sure everything is up to date.
 
 ## Development
 
-```bash
-bundle install
-shotgun -o 0.0.0.0 -p 4567 -u /ehgp-dev
-```
+After setup, run `script/server` to run the server in dev mode (except for when `$RACK_ENV` is set to `production`)
 
-## Apache Setup**
+## Production
+
+Deploy with `script/deploy` or `script/deploy <stage>` (stage defaults to `production`.)
+
+The deployment script should handle starting of the server itself. If not try `RACK_ENV=production script/server`.
+
+## Apache Setup
 
 ```apache
 Alias /ehgp /path/to/ehgp-info/public

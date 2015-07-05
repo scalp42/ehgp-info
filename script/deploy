@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# script/deploy: deploys the application.
+
+set -e
+cd "$(dirname "$0")/.."
+
+STAGE="production"
+test -n "$1" && STAGE="$1"
+
+test -f "config/deploy/${STAGE}.rb" || {
+  echo "Sorry, don't know how to deploy to '$STAGE'!"
+  exit 1
+}
+
+bundle exec cap $STAGE deploy

@@ -11,8 +11,8 @@ script/update
 test -z "$RACK_ENV" && RACK_ENV='development'
 
 echo "==> Starting APP in $RACK_ENV environment..."
-if [ "$RACK_ENV" == "production"]; then
+if [ "$RACK_ENV" == "production" ]; then
   bundle exec thin start -C config/thin.yml -p 13051
 else
-  shotgun -o 0.0.0.0 -p 4567 -u /ehgp-dev
+  bundle exec shotgun -o 0.0.0.0 -p 4567 -u /ehgp-dev
 fi

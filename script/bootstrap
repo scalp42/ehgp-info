@@ -1,13 +1,15 @@
 #!/bin/sh
-
-# script/bootstrap: Install all dependencies for running in
-#   development mode.
+# Install all dependencies for running in development mode.
 
 set -e
 cd "$(dirname "$0")/.."
 
 echo "==> Installing gem dependencies..."
-bundler version 2>&1 >/dev/null || {
+bundler version &>/dev/null || {
   gem install bundler --no-rdoc --no-ri
 }
-bundle install --path .bundle --without production
+
+bundle check --path .bundle &>/dev/null || {
+  bundle install --path .bundle --without production
+}
+bundle clean

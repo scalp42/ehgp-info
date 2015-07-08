@@ -1,4 +1,7 @@
 #!/bin/sh
+# Usage: script/console [ENV]
+# If ENV provided, connect to the given environment (if possible)
+# If ENV is missing, start a local console in development mode.
 
 set -e
 cd "$(dirname "$0")/.."

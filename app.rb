@@ -37,6 +37,7 @@ class EhgpSzene < Sinatra::Base
   use FakturaController
   use CodesController
   use ReferenztarifeController
+  use StatistikController
 
   not_found do
     slim :'404'

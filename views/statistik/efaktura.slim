@@ -1,0 +1,27 @@
+.page-header
+  h1
+    | eFaktura per XML
+    small< Volumen
+
+p.lead Die Summe aller elektronisch (via XML) empfangenen Rechnungen pro Monat pro Kanton.
+
+h2 Grafik
+em Coming Soon&copy;
+
+h2
+  | Daten
+  a.btn.btn-success< href="#{url('/statistik/efaktura.csv')}" Download für Excel
+
+table.table.table-striped.table-hover
+  thead
+    tr
+      th Jahr
+      th Monat
+      th GD
+      th Anz. Rechnungen
+  - @rows.each do |row|
+    tr
+      td= row[:jahr]
+      td= row[:monat]
+      td= row[:kanton]
+      td= row[:rechnungen]

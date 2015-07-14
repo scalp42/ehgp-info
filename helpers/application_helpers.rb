@@ -70,4 +70,15 @@ module ApplicationHelpers
   def link_to(text, url)
     '<a href="%s">%s</a>' % [url(url), text]
   end
+
+  # Rendert ein Panel wie auf der Titelseite
+  def home_panel(title, text, link_path, link_text = nil)
+    link_text = title if link_text.nil?
+    slim(:'_home_panel', locals: {
+      title: title,
+      text: text,
+      link_path: link_path,
+      link_text: link_text
+    })
+  end
 end

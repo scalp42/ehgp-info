@@ -4,3 +4,6 @@ environment: production
 prefix: /ehgp
 tag: ehgp-szene-production
 daemonize: true
+user: deployer
+group: deployer
+port: 13051

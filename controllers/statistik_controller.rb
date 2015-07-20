@@ -21,7 +21,24 @@ class StatistikController < ApplicationController
     end
   end
 
+  get('/statistik/top_le.?:format?') do
+    from = get_date(params[:from])
+    to = get_date(params[:to]) || Date.today.strftime('%Y-%m-%d')
+
+    if from.nil?
+      return slim :'statistik/top_le'
+    end
+
+    @data = Statistik.top_le(from, to)
+  end
+
   private
+
+  def get_date(input)
+    if input =~ /\d\d\d\d-\d\d-\d\d/
+      input
+    end
+  end
 
   def format
     @_format ||= (params[:format] || 'html')

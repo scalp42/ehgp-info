@@ -1,0 +1,22 @@
+a.btn.btn-default href="#{url('/statistik')}"== "#{glyphicon 'chevron-left'} zur&uuml;ck"
+
+.page-header
+  h1
+    | Top LE
+    small< pro Kanton
+
+p.lead Top LE für einen bestimmten Zeitraum pro Kanton
+
+
+
+- if @rows
+  h2
+    = "#{@rows.count} Datensätze"
+    a.btn.btn-success< href="#{url("/statistik/top_le.xlsx?from=#{@from}&to=#{@to}")}" Download für Excel
+
+  table.table.table-striped.table-hover
+    thead
+      tr== @cols.map { |c| "<th>#{c}</th>" }.join
+    tbody
+      - @rows.each do |row|
+        tr== row.values.map { |v| "<td>#{v}</td>" }.join

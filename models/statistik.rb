@@ -39,4 +39,20 @@ class Statistik
       'left join "Intermediaer" on "im_ID" = "sp_Intermediaer"',
       'where "sp_Aktiv" < 50'
   end
+
+  def self.top_le(from, to)
+    select '"Mandant"."md_Beschreibung" as kanton',
+      ', "PersonFirma"."pe_Name" as le',
+      ', count("KoGu"."kg_ID") as anzahl',
+      'from "Mandant"',
+      'inner join "KoGu" on "KoGu"."kg_md_ID" = "Mandant"."md_ID"',
+      'inner join "PersonFirma" on "PersonFirma"."pe_kg_ID" = "KoGu"."kg_ID"',
+      'where "Mandant"."md_ID" < 50',
+      'and "PersonFirma"."pe_Typ" = 7',
+      %Q{and "KoGu"."kg_CreateDate" >= to_Date('#{from}', 'YYYY-MM-DD') -- von},
+      %Q{and "KoGu"."kg_CreateDate" <= to_Date('#{to}', 'YYYY-MM-DD') -- bis},
+      %q{and "KoGu"."kg_ReferenzNr" not like 'S%'},
+      'group by "Mandant"."md_Beschreibung", "PersonFirma"."pe_Name"',
+      'order by "Mandant"."md_Beschreibung" asc, count("KoGu"."kg_ID") DESC'
+  end
 end

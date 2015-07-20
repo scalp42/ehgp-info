@@ -1,0 +1,18 @@
+.page-header
+  h1
+    | Aktive Spitäler
+    small< StammSpital
+
+p.lead Liste aller aktiven Spitäler
+
+h2
+  | Daten
+  a.btn.btn-success< href="#{url('/statistik/aktive_le.csv')}" Download für Excel
+
+table.table.table-striped.table-hover
+  thead
+    tr== @keys.map { |k| "<th>#{k.capitalize}</th>" }.join
+  - @rows.each do |row|
+    tr
+      - @keys.each do |k|
+        td= row[k]

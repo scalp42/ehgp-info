@@ -17,4 +17,26 @@ class Statistik
       '    , m."md_Kanton"',
       'order by jahr asc, monat asc'
   end
+
+  def self.aktive_le
+    select '"sp_ID" as id',
+      ', "sp_Name" as name',
+      ', "sp_EAN" as ean',
+      ', "sp_Telefon" as telefon',
+      ', "sp_Fax" as fax',
+      ', "sp_Mail" as mail',
+      ', "sp_Strasse" as strasse',
+      ', "sp_HausNummer" as hausnummer',
+      ', "sp_Plz" as plz',
+      ', "sp_Ort" as ort',
+      ', "sp_Kanton" as kanton',
+      ', "im_Name" as intermediaer',
+      ', "sp_Typ" as typ',
+      ', "sp_Sprache" as sprache',
+      ', "sp_cd_LeXmlZertifiziert" as xml_zertifiziert',
+      ', "sp_XmlOhneStorno" as xml_ohne_storno',
+      'from "StammSpital"',
+      'left join "Intermediaer" on "im_ID" = "sp_Intermediaer"',
+      'where "sp_Aktiv" < 50'
+  end
 end

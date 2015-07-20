@@ -41,4 +41,5 @@ set :rvm_ruby_version, '2.2.1@ehgp-info'
 # Bundler
 set :bundle_jobs, 2
 
-after 'deploy:finished', 'deploy:restart'
+before 'deploy:finished', 'deploy:stop'
+after 'deploy:finished', 'deploy:start'

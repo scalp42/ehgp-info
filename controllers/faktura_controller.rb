@@ -5,7 +5,7 @@ class FakturaController < ApplicationController
     @mandanten = Mandant.with_faktura_contracts
     @spitaeler = Spital.having_faktura_contracts
 
-    slim :faktura_index
+    slim :'faktura/index'
   end
 
   get '/faktura/kanton/:id' do |kanton|
@@ -28,7 +28,7 @@ class FakturaController < ApplicationController
       'and "sp_cd_LeXmlZertifiziert" = 1',
       'order by "sp_Kanton" asc, "sp_Name" asc'
 
-    slim :faktura_kanton
+    slim :'faktura/kanton'
   end
 
   get '/faktura/spital/:id' do |id|
@@ -44,6 +44,6 @@ class FakturaController < ApplicationController
       'and "vt_cd_LeMdFaktura" = 1',
       'order by "md_Beschreibung" asc'
 
-    slim :faktura_spital
+    slim :'faktura/spital'
   end
 end

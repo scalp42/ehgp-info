@@ -10,6 +10,6 @@ module CodeHelpers
       %Q{where "cd_Typ" = '#{type}'},
       'order by "cd_Sort" asc'
 
-    slim :code_table, locals: { title: title, codes: codes }
+    slim :'codes/_table', locals: { title: title, codes: codes }
   end
 end

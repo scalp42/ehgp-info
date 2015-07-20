@@ -4,6 +4,6 @@ class CodesController < ApplicationController
   helpers CodeHelpers
 
   get ('/codes') do
-    slim :codes_index
+    slim :'codes/index'
   end
 end

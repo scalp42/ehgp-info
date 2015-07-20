@@ -11,7 +11,7 @@ h2 Grafik
 em Coming Soon&copy;
 
 h2
-  | Daten
+  = "#{@rows.count} Datensätze"
   a.btn.btn-success< href="#{url('/statistik/efaktura.xlsx')}" Download für Excel
 
 table.table.table-striped.table-hover

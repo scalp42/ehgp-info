@@ -1,6 +1,8 @@
 require 'controllers/application_controller'
 
 class StatistikController < ApplicationController
+  helpers StatistikHelpers
+
   get ('/statistik') do
     slim :'statistik/index'
   end

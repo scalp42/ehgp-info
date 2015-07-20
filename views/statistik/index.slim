@@ -1,6 +1,6 @@
 .page-header
   h1 Statistiken
 
-.row.home
-  == home_panel 'eFaktura Volumen', 'Alle elektronisch gelieferten Rechnungen pro Kanton pro Monat', '/statistik/efaktura'
-  == home_panel 'Aktive LE', 'Liste aller aktiven Spitäler', '/statistik/aktive_le'
+.list-group
+  == stats_panel 'eFaktura Volumen', 'Alle elektronisch gelieferten Rechnungen pro Kanton pro Monat', 'efaktura'
+  == stats_panel 'Aktive LE', 'Liste aller aktiven Spitäler', 'aktive_le'

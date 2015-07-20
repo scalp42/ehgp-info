@@ -30,7 +30,17 @@ html
             == menu_link '/faktura',        'eFaktura',       icon: :file
             == menu_link '/codes',          'Codes',          icon: :qrcode
             == menu_link '/referenztarife', 'Referenztarife', icon: :list
-            == menu_link '/statistik',      'Statistik',      icon: :stats
+            li.dropdown
+              a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                ==> glyphicon :stats
+                | Statistik
+                span.caret<
+              ul.dropdown-menu
+                li
+                  a href="#{url('/statistik')}" Übersicht
+                li.divider role="separator"
+                == menu_link '/statistik/efaktura', 'eFaktura Volumen'
+                == menu_link '/statistik/aktive_le', 'Aktive LE'
         
         
     .container

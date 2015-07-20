@@ -3,7 +3,7 @@ require 'models/base'
 class Statistik
   extend DatabaseHelpers
 
-  def self.efakturas
+  def self.efaktura
     select 'extract(year from r."rg_eingang") as jahr',
       ', extract(month from r."rg_eingang") as monat',
       ', m."md_Kanton" as kanton',

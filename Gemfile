@@ -6,6 +6,7 @@ gem 'sequel'
 gem 'slim'
 gem 'thin'
 gem 'pry'
+gem 'axlsx'
 
 group :development do
   gem 'shotgun'

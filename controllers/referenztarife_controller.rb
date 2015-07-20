@@ -10,12 +10,12 @@ class ReferenztarifeController < ApplicationController
       'group by "md_Kanton", "md_Beschreibung"',
       'order by "md_Beschreibung"'
 
-    slim :referenztarife_index
+    slim :'referenztarife/index'
   end
 
   get('/referenztarife/:kanton') do
     @mandant = Mandant.find(params['kanton'])
     @tarife = Referenztarif.for(@mandant.id)
-    slim :referenztarife_show
+    slim :'referenztarife/show'
   end
 end

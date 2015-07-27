@@ -1,0 +1,26 @@
+// Generate the eFaktura Chart
+var data = {
+  labels: <%= @labels.to_json %>,
+  datasets: [
+    <% @dataset.each do |kanton, data| %>
+    {
+      label: "<%= kanton %>",
+      fillColor: "<%= @colors[kanton] %>",
+      strokeColor: "#333333",
+      highlightFill: "<%= @colors[kanton] %>",
+      highlightStroke: "#000000",
+      data: <%= data.values.to_json %>
+    },
+    <% end %>
+  ]
+};
+
+var ctx = document.getElementById('efakturaChart').getContext("2d");
+var efChart = new Chart(ctx).Bar(data, {
+  multiTooltipTemplate: "<%%=datasetLabel%>: <%%=value%>"
+});
+
+// add a legend
+var legend = document.createElement('div');
+legend.innerHTML = efChart.generateLegend();
+document.getElementById('legend').appendChild(legend.firstChild);

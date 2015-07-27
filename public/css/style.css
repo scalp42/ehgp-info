@@ -22,3 +22,26 @@ body {
 .home .lead {
   height: 87px;
 }
+
+.bar-legend {
+  list-style: none;
+}
+.bar-legend li {
+  display: inline-block;
+  height: 1em;
+  line-height: 1em;
+  vertical-align: middle
+}
+.bar-legend span {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #000;
+  margin-left: 10px;
+  margin-right: 4px;
+  border-radius: 2px;
+}
+
+.chart {
+  width: 100%;
+}

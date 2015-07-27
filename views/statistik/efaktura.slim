@@ -8,7 +8,9 @@ a.btn.btn-default href="#{url('/statistik')}"== "#{glyphicon 'chevron-left'} zur
 p.lead Die Summe aller elektronisch (via XML) empfangenen Rechnungen pro Monat pro Kanton.
 
 h2 Grafik
-em Coming Soon&copy;
+
+p#legend
+canvas.chart#efakturaChart
 
 h2
   = "#{@rows.count} Datensätze"
@@ -27,3 +29,6 @@ table.table.table-striped.table-hover
       td= row[:monat]
       td= row[:kanton]
       td= row[:rechnungen]
+
+script src=url('/vendor/js/Chart.min.js')
+script src=url('/statistik/efaktura.js')

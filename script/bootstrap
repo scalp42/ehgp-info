@@ -9,7 +9,7 @@ bundler version &>/dev/null || {
   gem install bundler --no-rdoc --no-ri
 }
 
-bundle check --path .bundle &>/dev/null || {
-  bundle install --path .bundle --without production
+bundle check &>/dev/null || {
+  bundle install --without production
 }
 bundle clean

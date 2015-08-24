@@ -1,0 +1,54 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          ehgp-szene
+# Required-Start:    $local_fs $remote_fs
+# Required-Stop:     $local_fs $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      S 0 1 6
+# Short-Description: eHGP-Szene
+# Description:       eHGP-Szene
+### END INIT INFO
+
+APP_PATH=/appl/apps/ehgp-info/current
+PORT=13051
+USER=deployer
+GROUP=$(id -gn $USER)
+
+rvm_bundle_thin() {
+    export NLS_LANG=.UTF8
+    source ~deployer/.rvm/scripts/rvm
+    cd $APP_PATH
+    # bundle exec thin $1 -C config/thin/production.yml -p $PORT -u $USER -g $GROUP
+    bundle exec thin $1 -C config/thin/production.yml
+}
+
+thin_status() {
+    pidfile="$APP_PATH/tmp/pids/thin.pid"
+    if ! [ -f $pidfile ]; then
+        echo 'eHGP-Szene stopped'
+        exit 1
+    elif [ -s $pidfile -a -d /proc/$(<$pidfile) ]; then
+        echo 'eHGP-Szene running!'
+        exit 0
+    else
+        # stale pidfile!
+        echo 'eHGP-Szene crashed! :-('
+        exit 2
+    fi
+}
+
+case "$1" in
+start|stop|restart)
+    # TODO: Check if current user = $USER or root
+    rvm_bundle_thin $1 && sleep 1 && thin_status
+    ;;
+status)
+    thin_status
+    ;;
+*)
+    echo "Usage: $0 {start|stop|restart|status}" >&2
+    exit 3
+    ;;
+esac
+
+:

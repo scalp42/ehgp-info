@@ -93,7 +93,7 @@ class StatistikController < ApplicationController
 
     filename = Date.today.strftime("#{file}_%Y-%m-%d.xlsx")
     headers \
-      'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; char    set=UTF-8',
+      'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8',
       'Content-Disposition' => "attachment; filename=#{filename}"
 
     p.to_stream # rack can read a stream directly

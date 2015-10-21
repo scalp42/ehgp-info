@@ -55,17 +55,6 @@ module ApplicationHelpers
     end
   end
 
-  def list_group_item_spital(spital)
-    css = (spital.aktiv? && spital.zertifiziert?) ? '' : '.list-group-item-danger'
-    url = url("/faktura/spital/#{spital.id}")
-    out = [
-      %Q{a.list-group-item#{css} href="#{url}"},
-      "  #{spital.bezeichnung}",
-      "  span.badge #{pluralize(spital.vertraege, 'Vertrag', 'Vertr&auml;ge')}"
-    ].join("\n")
-    slim out
-  end
-
   # Erzeugt einen Link mit dem angegebenen +text+ zu der angegebenen +url+.
   def link_to(text, url)
     '<a href="%s">%s</a>' % [url(url), text]

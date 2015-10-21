@@ -3,7 +3,9 @@ require 'controllers/application_controller'
 class FakturaController < ApplicationController
   get '/faktura' do
     @mandanten = Mandant.with_faktura_contracts
-    @spitaeler = Spital.having_faktura_contracts
+    @spitaeler = Spital.xml_with_contracts
+
+    @invalid = Spital.invalid
 
     slim :'faktura/index'
   end

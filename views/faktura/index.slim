@@ -20,8 +20,22 @@ p <em>Klicke auf einen Kanton oder Spital um weitere Infos zu erhalten. Mit <kbd
     .panel.panel-default
       .panel-heading
         h3.panel-title Leistungserbringer
+
+      - if @invalid.any?
+        .panel-body.bg-danger
+          p.lead <strong class="text-danger">Achtung!</strong> Die folgenden Spit&auml;ler haben Vertr&auml;ge, die den Empfang von XML-Fakturen erm&ouml;glichen, sind aber nicht f&uuml;r den elektronischen Rechnungsempfang zugelassen oder inaktiv:
+
+        .list-group
+          - @invalid.each do |s|
+            a.list-group-item.list-group-item-danger href=url("/faktura/spital/#{s.id}")
+              = s.bezeichnung
+              span.badge == pluralize s.vertraege, 'Vertrag', 'Vertr&auml;ge'
+
       .panel-body
         p.lead Die folgenden #{@spitaeler.count} Spit&auml;ler d&uuml;rfen elektronische Rechnungen einreichen:
+
       .list-group
         - @spitaeler.each do |s|
-          == list_group_item_spital(s)
+          a.list-group-item href=url("/faktura/spital/#{s.id}")
+            = s.bezeichnung
+            span.badge == pluralize s.vertraege, 'Vertrag', 'Vertr&auml;ge'

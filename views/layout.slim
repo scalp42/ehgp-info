@@ -16,7 +16,7 @@ html
   body
 
     nav.navbar.navbar-default.navbar-fixed-top
-      .container
+      .container-fluid
         .navbar-header
           button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
             span.sr-only Toggle navigation
@@ -43,12 +43,12 @@ html
                 == menu_link '/statistik/aktive_le', 'Aktive LE'
         
         
-    .container
+    .container-fluid
       == yield
 
 
     footer.page-footer
-      .container
+      .container-fluid
         p
           | Ein Service von
           em<> Enterprise Applications

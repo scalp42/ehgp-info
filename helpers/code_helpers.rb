@@ -4,12 +4,7 @@ module CodeHelpers
   def code_table(title, type)
     # Codetypes only contain letters, underscores and dashes
     type.gsub!(/[^a-zA-Z_-]/, '')
-    codes = select '"cd_ID" as id',
-      ', "cd_Beschreibung" as text',
-      'from "ISCode"',
-      %Q{where "cd_Typ" = '#{type}'},
-      'order by "cd_Sort" asc'
 
-    slim :'codes/_table', locals: { title: title, codes: codes }
+    slim :'codes/_table', locals: { title: title, codes: Code.by_type(type) }
   end
 end

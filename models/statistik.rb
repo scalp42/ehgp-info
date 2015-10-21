@@ -35,8 +35,8 @@ class Statistik
       ', "sp_Sprache" as sprache',
       ', "sp_cd_LeXmlZertifiziert" as xml_zertifiziert',
       ', "sp_XmlOhneStorno" as xml_ohne_storno',
-      'from "StammSpital"',
-      'left join "Intermediaer" on "im_ID" = "sp_Intermediaer"',
+      'from KOGU."StammSpital"',
+      'left join KOGU."Intermediaer" on "im_ID" = "sp_Intermediaer"',
       'where "sp_Aktiv" < 50'
   end
 end

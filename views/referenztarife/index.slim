@@ -5,7 +5,7 @@
   .panel-heading Kantone
   .list-group
     - @kantone.each do |k|
-      a.list-group-item href=url('/referenztarife/'+k[:id])
-        = k[:name]
-        span.badge= pluralize(k[:tarife], 'Tarif', 'Tarife')
+      a.list-group-item href=url('/referenztarife/'+k.id)
+        = k.name
+        span.badge= pluralize(k.tarife, 'Tarif', 'Tarife')
 

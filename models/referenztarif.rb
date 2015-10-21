@@ -10,8 +10,8 @@ class Referenztarif < Base
       ', "rt_Aktiv" as aktiv',
       ', "rt_Betrag" as betrag',
       ', "ct_Text" as text',
-      'from "Referenztarif"',
-      'join "ISCodeText" on "ct_ID" = "rt_ReferenzCd"',
+      'from KOGU."Referenztarif"',
+      'join KOGU."ISCodeText" on "ct_ID" = "rt_ReferenzCd"',
       'where "rt_Mandant" =', mandant_id.to_i,
       'and "ct_Sprache" = \'DE\'',
       'order by "rt_Sort" asc, "rt_GueltigAb" desc, "ct_Text" desc'

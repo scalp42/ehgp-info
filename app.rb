@@ -25,7 +25,6 @@ ApplicationController.configure do
   logger = Logger.new(log)
   logger.sev_threshold = Logger::WARN if settings.production?
   DB.logger = logger
-  DB.run('ALTER SESSION SET CURRENT_SCHEMA = KOGU')
 end
 
 Dir.glob("#{APP_ROOT}/{helpers,models,controllers}/*.rb").each { |file| require file }

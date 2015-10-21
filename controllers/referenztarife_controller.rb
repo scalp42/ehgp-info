@@ -2,14 +2,7 @@ require 'controllers/application_controller'
 
 class ReferenztarifeController < ApplicationController
   get('/referenztarife') do
-    @kantone = select '"md_Kanton" as id',
-                    ', "md_Beschreibung" as name',
-                    ', count("rt_ReferenzCd") as tarife',
-      'from "Mandant"',
-      'inner join "Referenztarif" on "md_ID" = "rt_Mandant"',
-      'group by "md_Kanton", "md_Beschreibung"',
-      'order by "md_Beschreibung"'
-
+    @kantone = Mandant.with_reference_tarif
     slim :'referenztarife/index'
   end
 

@@ -25,8 +25,8 @@ class Spital < Base
         ', "sp_Aktiv" as aktiv',
         ', "sp_cd_LeXmlZertifiziert" as zertifiziert',
         ', "im_Name" as intermediaer',
-        'from "StammSpital"',
-        'left join "Intermediaer" on "im_ID" = "sp_Intermediaer"',
+        'from KOGU."StammSpital"',
+        'left join KOGU."Intermediaer" on "im_ID" = "sp_Intermediaer"',
         'where "sp_ID" =', id.to_i
 
       data.nil? ? nil : self.new(data)
@@ -40,8 +40,8 @@ class Spital < Base
         ', "sp_Aktiv" as aktiv',
         ', "sp_cd_LeXmlZertifiziert" as zertifiziert',
         ', count ("vt_sp_ID") as vertraege',
-        'from "StammSpital"',
-        'left outer join "VertragMandantMitSpital" on "vt_sp_ID" = "sp_ID"',
+        'from KOGU."StammSpital"',
+        'left outer join KOGU."VertragMandantMitSpital" on "vt_sp_ID" = "sp_ID"',
         'where "vt_cd_LeMdFaktura" = 1',
         'group by "sp_ID","sp_Kanton", "sp_Name", "sp_Aktiv", "sp_cd_LeXmlZertifiziert"',
         'order by "sp_Kanton", "sp_Name"'

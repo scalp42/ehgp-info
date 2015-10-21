@@ -36,7 +36,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp')
 
 # RVM
 set :rvm_type, :user
-set :rvm_ruby_version, '2.2.1@ehgp-info'
+set :rvm_ruby_version, '2.2.3@ehgp-info'
 
 # Bundler
 set :bundle_jobs, 2

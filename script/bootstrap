@@ -12,4 +12,3 @@ bundler version &>/dev/null || {
 bundle check &>/dev/null || {
   bundle install --without production
 }
-bundle clean

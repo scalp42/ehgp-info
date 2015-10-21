@@ -43,7 +43,6 @@ class Spital < Base
         'from KOGU."StammSpital"',
         'left outer join KOGU."VertragMandantMitSpital" on "vt_sp_ID" = "sp_ID"',
         'where "sp_cd_LeXmlZertifiziert" = 1',
-        'and "vt_cd_LeMdFaktura" = 1',
         'and "sp_Aktiv" < 50',
         'group by "sp_ID","sp_Kanton", "sp_Name", "sp_Ort", "sp_Aktiv", "sp_cd_LeXmlZertifiziert"',
         'order by "sp_Kanton", "sp_Name"'

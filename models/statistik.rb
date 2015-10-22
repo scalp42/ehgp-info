@@ -22,6 +22,7 @@ class Statistik
     select '"sp_ID" as id',
       ', "sp_Name" as name',
       ', "sp_EAN" as ean',
+      %q{, nvl("GruppenID", 'Nutzt eKOGU nicht') as guppen_id},
       ', "sp_Telefon" as telefon',
       ', "sp_Fax" as fax',
       ', "sp_Mail" as mail',
@@ -37,6 +38,7 @@ class Statistik
       ', "sp_XmlOhneStorno" as xml_ohne_storno',
       'from KOGU."StammSpital"',
       'left join KOGU."Intermediaer" on "im_ID" = "sp_Intermediaer"',
+      'left join KOGU."IS_Gruppe" on "Referenz" = "sp_ID"',
       'where "sp_Aktiv" < 50'
   end
 end

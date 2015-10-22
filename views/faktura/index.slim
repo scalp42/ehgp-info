@@ -23,7 +23,7 @@ p <em>Klicke auf einen Kanton oder Spital um weitere Infos zu erhalten. Mit <kbd
 
       - if @invalid.any?
         .panel-body.bg-danger
-          p.lead <strong class="text-danger">Achtung!</strong> Die folgenden Spit&auml;ler haben Vertr&auml;ge, die den Empfang von XML-Fakturen erm&ouml;glichen, sind aber nicht f&uuml;r den elektronischen Rechnungsempfang zugelassen oder inaktiv:
+          p.lead <strong class="text-danger">Achtung!</strong> Die folgenden Spitäler haben Verträge, die den Empfang von XML-Fakturen ermöglichen, sind aber für den elektronischen Rechnungsempfang nicht zugelassen oder inaktiv:
 
         .list-group
           - @invalid.each do |s|

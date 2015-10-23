@@ -38,7 +38,7 @@ class Statistik
       ', "sp_XmlOhneStorno" as xml_ohne_storno',
       'from KOGU."StammSpital"',
       'left join KOGU."Intermediaer" on "im_ID" = "sp_Intermediaer"',
-      'left join KOGU."IS_Gruppe" on "Referenz" = "sp_ID"',
+      %(left join KOGU."IS_Gruppe" on "Referenz" = "sp_ID" and "ReferenzTyp" = 'LE'),
       'where "sp_Aktiv" < 50'
   end
 end

@@ -62,7 +62,7 @@ module ApplicationHelpers
 
   # Rendert ein Panel wie auf der Titelseite
   def home_panel(title, text, link_path, link_text = nil)
-    link_text = title if link_text.nil?
+    link_text = "#{title} &raquo;" if link_text.nil?
     slim(:'_home_panel', locals: {
       title: title,
       text: text,

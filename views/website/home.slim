@@ -2,25 +2,7 @@
   h1 eHGP-Szene
 
 .row.home
-  .col-sm-6.col-lg-4
-    .jumbotron
-      h2 eFaktura
-      p.lead Zeige an welche Spit&auml;ler XML-Fakturas einrichten k&ouml;nnen.
-      p
-        a.btn.btn-primary.btn-lg.btn-block href="#{url('/faktura')}" role="Button" eFaktura &raquo;
-
-  .col-sm-6.col-lg-4
-    .jumbotron
-      h2 Codes
-      p.lead Zeigt Codetexte für ausgew&auml;hlte Codes an.
-      p
-        a.btn.btn-primary.btn-lg.btn-block href="#{url('/codes')}" role="Button" Codes &raquo;
-
-  .col-sm-6.col-lg-4
-    .jumbotron
-      h2 Referenztarife
-      p.lead Listet Referenztarife auf.
-      p
-        a.btn.btn-primary.btn-lg.btn-block href="#{url('/referenztarife')}" role="Button" Referenztarife &raquo;
-
+  == home_panel 'eFaktura', 'Zeigt welche Spitäler XML-Fakturas einreichen können', '/faktura'
+  == home_panel 'Codes', 'Zeigt Codetexte für ausgewählte Codes an', '/codes'
+  == home_panel 'Referenztarife', 'Listet Referenztarife auf', '/referenztarife'
   == home_panel 'Statistik', 'Diverse Statistiken zur Nutzung', '/statistik'

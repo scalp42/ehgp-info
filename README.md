@@ -1,4 +1,4 @@
-# eHGP Szene
+# eHGP Szene [![Dependency Status](https://gemnasium.com/abx-ea/ehgp-info.svg)](https://gemnasium.com/abx-ea/ehgp-info)
 
 ## Setup
 

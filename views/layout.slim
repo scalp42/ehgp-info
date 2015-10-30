@@ -50,16 +50,16 @@ html
     footer.page-footer
       .container-fluid
         p
-          | Ein Service von
-          em<> Enterprise Applications
-          | &middot;
-          ==<> link_to 'Update News', '/updates'
-          | &middot;
-          a< href="https://github.com/abx-ea/ehgp-info/issues" Issues
+          ' Ein Service von <em>Enterprise Applications</em>
+          ' &middot;
+          == link_to 'Update News', '/updates'
+          ' &middot;
+          a href="https://github.com/abx-ea/ehgp-info/issues" Issues
         p
           | Powered by Open Source Software.
           ul.list-inline
-            li <a href="http://www.sinatrarb.com/">Sinatra</a>
+            li <a href="https://www.ruby-lang.org/">#{RUBY_ENGINE} #{RUBY_VERSION}</a>
+            li <a href="https://www.sinatrarb.com/">Sinatra</a>
             li <a href="http://getbootstrap.com/">Twitter Bootstrap</a>
             li and <a href="https://github.com/abx-ea/ehgp-info/blob/master/Gemfile">many more</a>...
 

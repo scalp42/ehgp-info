@@ -6,6 +6,7 @@ gem 'sequel'
 gem 'slim'
 gem 'thin'
 gem 'pry'
+gem 'nokogiri', '~> 1.6.7.rc4', require: false
 gem 'axlsx'
 
 group :development do

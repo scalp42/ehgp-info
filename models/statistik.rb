@@ -31,13 +31,11 @@ class Statistik
       ', "sp_Plz" as plz',
       ', "sp_Ort" as ort',
       ', "sp_Kanton" as kanton',
-      ', "im_Name" as intermediaer',
       ', "sp_Typ" as typ',
       ', "sp_Sprache" as sprache',
       ', "sp_cd_LeXmlZertifiziert" as xml_zertifiziert',
       ', "sp_XmlOhneStorno" as xml_ohne_storno',
       'from KOGU."StammSpital"',
-      'left join KOGU."Intermediaer" on "im_ID" = "sp_Intermediaer"',
       %(left join KOGU."IS_Gruppe" on "Referenz" = "sp_ID" and "ReferenzTyp" = 'LE'),
       'where "sp_Aktiv" < 50'
   end

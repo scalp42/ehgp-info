@@ -24,9 +24,7 @@ class Spital < Base
         ', "sp_EAN" as ean',
         ', "sp_Aktiv" as aktiv',
         ', "sp_cd_LeXmlZertifiziert" as zertifiziert',
-        ', "im_Name" as intermediaer',
         'from KOGU."StammSpital"',
-        'left join KOGU."Intermediaer" on "im_ID" = "sp_Intermediaer"',
         'where "sp_ID" =', id.to_i
 
       data.nil? ? nil : self.new(data)

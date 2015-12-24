@@ -11,4 +11,8 @@ class Base
   def to_s
     [self.class.name, @data].join
   end
+
+  def to_json(json = JSON)
+    json.generate(@data)
+  end
 end
